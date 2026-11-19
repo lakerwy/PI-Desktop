@@ -6,6 +6,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import {
   APP_MENU_COMMANDS,
+  APP_DISPLAY_NAME,
   APP_NAME,
   IPC,
   isThemeColorScheme,
@@ -273,7 +274,7 @@ export function createApplicationLifecycle({
     if (process.platform === "darwin") icon.setTemplateImage(true);
 
     state.tray = new Tray(icon);
-    state.tray.setToolTip(APP_NAME);
+    state.tray.setToolTip(APP_DISPLAY_NAME);
     // macOS single-click opens its attached menu without focusing/reading a conversation.
     // mouse-enter/move/leave replace the native NSStatusItem with a custom view,
     // which hides the menu-bar extra. Keep hover retry on Windows/Linux only.
@@ -571,12 +572,12 @@ export function createApplicationLifecycle({
    * theme preference the renderer paints. `system` keeps following the OS;
    * an explicit or plugin base locks the native appearance so a dark dock
    * cannot sit on a light Liquid Glass plate (D348). Missing `plugin:` themes
-   * fall back to `system`, matching the renderer.
+   * fall back to `light`, matching the renderer.
    */
 
   function applyNativeThemeSource(settings?: { theme?: unknown } | null) {
     const preference = settings?.theme;
-    let next: "system" | "light" | "dark" = "system";
+    let next: "system" | "light" | "dark" = "light";
     if (isThemeColorScheme(preference)) {
       next = preference;
     } else if (typeof preference === "string" && preference.startsWith("plugin:")) {

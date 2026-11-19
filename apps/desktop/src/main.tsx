@@ -14,7 +14,7 @@ import "./styles/globals.css";
 
 const rendererSurface = new URLSearchParams(window.location.search).get("surface");
 if (rendererSurface) document.documentElement.dataset.surface = rendererSurface;
-document.documentElement.dataset.theme = "dark";
+document.documentElement.dataset.theme = "light";
 // Window-chrome layout differs per OS (traffic lights left on macOS,
 // controls overlay right on Windows/Linux); set before first paint.
 document.documentElement.dataset.platform =

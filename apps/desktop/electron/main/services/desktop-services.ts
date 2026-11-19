@@ -5,6 +5,7 @@ import {
   type BrowserWindow,
 } from "electron";
 import {
+  APP_DISPLAY_NAME,
   APP_NAME,
   type ComposerPasteFile,
 } from "@pi-desktop/shared";
@@ -106,7 +107,7 @@ export function createDesktopServices({
   const requestPluginNotificationPermission =
     async (): Promise<PluginNotificationPermission> => {
       const result = await showPluginNativeNotification({
-        title: APP_NAME + " notifications",
+        title: APP_DISPLAY_NAME + " notifications",
         body: "Native notifications are enabled for this app.",
       });
       return result.permission;

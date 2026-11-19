@@ -19,6 +19,12 @@ async function sourceFiles(directory) {
   return nested.flat();
 }
 
+/** Source-contract markers always use POSIX separators so assertions that
+ *  quote a path stay identical on Windows and Linux. */
+function sourceMarker(root, path) {
+  return relative(root, path).replaceAll("\\", "/");
+}
+
 async function readDomainSource(facadeRelativePath, domainRelativePath) {
   const facade = join(desktopSourceRoot, facadeRelativePath);
   const domainRoot = join(desktopSourceRoot, domainRelativePath);
@@ -26,7 +32,7 @@ async function readDomainSource(facadeRelativePath, domainRelativePath) {
   const chunks = await Promise.all(
     paths.map(async (path) => {
       const source = await readFile(path, "utf8");
-      return `\n/* ${relative(desktopSourceRoot, path)} */\n${source}`;
+      return `\n/* ${sourceMarker(desktopSourceRoot, path)} */\n${source}`;
     }),
   );
   return chunks.join("\n");
@@ -46,7 +52,7 @@ function readDomainSourceSync(facadeRelativePath, domainRelativePath) {
   const facade = join(desktopSourceRoot, facadeRelativePath);
   const domainRoot = join(desktopSourceRoot, domainRelativePath);
   return [facade, ...sourceFilesSync(domainRoot)]
-    .map((path) => `\n/* ${relative(desktopSourceRoot, path)} */\n${readFileSync(path, "utf8")}`)
+    .map((path) => `\n/* ${sourceMarker(desktopSourceRoot, path)} */\n${readFileSync(path, "utf8")}`)
     .join("\n");
 }
 

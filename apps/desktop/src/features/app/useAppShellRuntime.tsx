@@ -568,7 +568,7 @@ export function useAppShellRuntime() {
   }, [ready, projectPath]);
 
   useEffect(() => {
-    const preference = settings?.theme ?? "system";
+    const preference = settings?.theme ?? "light";
     const pluginTheme = preference.startsWith("plugin:")
       ? pluginThemes.find((entry) => entry.id === preference)
       : undefined;

@@ -71,7 +71,7 @@ test("native theme source follows the app preference without touching window mat
   const applyMenu = functionSource(lifecycleSource, "applyApplicationMenuSettings");
   const send = functionSource(mainSource, "sendToRenderer");
 
-  assert.match(applyNative, /let next: "system" \| "light" \| "dark" = "system"/);
+  assert.match(applyNative, /let next: "system" \| "light" \| "dark" = "light"/);
   assert.match(
     applyNative,
     /if \(isThemeColorScheme\(preference\)\) \{\s*next = preference;/,

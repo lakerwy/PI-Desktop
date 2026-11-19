@@ -3,7 +3,7 @@
   "version": "0.23.0-beta.3",
   "desktopName": "pi-desktop.desktop",
   "private": true,
-  "description": "PI-Desktop Electron application",
+  "description": "芯博agent Electron application",
   "homepage": "https://github.com/vastsa/PI-Desktop",
   "author": {
     "name": "vastsa",
@@ -83,7 +83,7 @@
   },
   "build": {
     "appId": "net.aiuo.pi-desktop",
-    "productName": "PI-Desktop",
+    "productName": "芯博agent",
     "directories": {
       "output": "release"
     },
@@ -210,7 +210,7 @@
       ]
     },
     "win": {
-      "executableName": "PI-Desktop",
+      "executableName": "xinbo-agent",
       "artifactName": "PI-Desktop-Portable-${version}.${ext}",
       "target": [
         {
@@ -251,7 +251,7 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "shortcutName": "PI-Desktop",
+      "shortcutName": "芯博agent",
       "artifactName": "PI-Desktop-Setup-${version}.${ext}"
     },
     "portable": {

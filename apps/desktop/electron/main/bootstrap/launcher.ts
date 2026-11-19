@@ -2,6 +2,7 @@ import { app, BrowserWindow, globalShortcut, screen } from "electron";
 import { join } from "node:path";
 import { getModuleDirectory } from "../module-path";
 import {
+  APP_DISPLAY_NAME,
   APP_NAME,
   IPC,
   KEYBOARD_SHORTCUTS,
@@ -122,7 +123,7 @@ export function createLauncher({
     const creation = (async () => {
       const window = new BrowserWindow({
         ...pluginLauncherBounds(),
-        title: `${APP_NAME} Plugin Launcher`,
+        title: `${APP_DISPLAY_NAME} Plugin Launcher`,
         show: false,
         frame: false,
         transparent: true,

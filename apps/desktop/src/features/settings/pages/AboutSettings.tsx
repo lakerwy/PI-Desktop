@@ -25,7 +25,7 @@ export function AboutSettings({
   return (
     <div className="settings-stack">
       <div className="settings-about-hero">
-        <div className="settings-about-hero-name">{version?.name || "PI-Desktop"}</div>
+        <div className="settings-about-hero-name">{version?.name || "芯博agent"}</div>
         <div className="settings-about-hero-version">
           {t("settings.aboutVersion", { version: version?.version ?? "" })}
         </div>

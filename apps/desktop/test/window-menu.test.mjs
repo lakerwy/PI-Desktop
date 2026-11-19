@@ -38,7 +38,7 @@ const iconScriptSource = await readFile(
 );
 
 test("macOS installs a standard application menu before window creation", () => {
-  assert.match(menuSource, /label:\s*APP_NAME/);
+  assert.match(menuSource, /label:\s*APP_DISPLAY_NAME/);
   for (const role of [
     "about",
     "services",

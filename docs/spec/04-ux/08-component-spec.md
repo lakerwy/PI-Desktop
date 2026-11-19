@@ -779,8 +779,15 @@ visually distinct from list content.
 
 ### 3.7 Brand and icon contract
 
-- The visible shell name is `PI-Desktop`; Codex is not used as the renderer
-  identity.
+- The visible shell name comes from `APP_DISPLAY_NAME` (`芯博agent` in this
+  branded build) through the `app.shellName` catalog key; Codex is not used as
+  the renderer identity. `APP_NAME` stays `PI-Desktop` because it names the
+  installation directories, the single-instance lock, crash dumps, and the
+  update feed, so changing the visible name must not relocate user data.
+- The default appearance is the light palette. `html[data-theme]` starts as
+  `light` in `index.html` and `main.tsx`, and an absent `AppSettings.theme`
+  resolves to `light` in both the renderer and `applyNativeThemeSource`.
+  `system` remains an explicit choice that follows the OS.
 - A control with no label states `.icon-btn-square`, which pins both axes to
   `--ds-control-size` (28px). `.icon-btn` on its own takes its width from its
   glyph plus 8px of side padding — right for a label-driven pill, wrong for a

@@ -171,13 +171,13 @@ export function PluginLauncher() {
     void api
       .getSettings()
       .then((settings) => {
-        applyTheme(settings.theme);
+        applyTheme(settings.theme ?? "light");
         if (isThemeColorScheme(settings.theme)) return;
         mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
         onSystemThemeChange = () => applyTheme(settings.theme);
         mediaQuery.addEventListener("change", onSystemThemeChange);
       })
-      .catch(() => applyTheme("system"));
+      .catch(() => applyTheme("light"));
 
     return () => {
       disposed = true;
@@ -241,8 +241,9 @@ export function PluginLauncher() {
     void api
       .getSettings()
       .then((settings) => {
-        document.documentElement.dataset.theme = isThemeColorScheme(settings.theme)
-          ? settings.theme
+        const preference = settings.theme ?? "light";
+        document.documentElement.dataset.theme = isThemeColorScheme(preference)
+          ? preference
           : window.matchMedia("(prefers-color-scheme: light)").matches
             ? "light"
             : "dark";
