@@ -8,7 +8,7 @@ export const APP_NAME = "PI-Desktop";
  * existing profiles, locks, and update lanes keep their paths.
  */
 export const APP_DISPLAY_NAME = "芯博agent";
-export const APP_VERSION = "0.23.0-beta.3";
+export const APP_VERSION = "0.23.0";
 
 export const APP_MENU_COMMANDS = [
   "newTask",
