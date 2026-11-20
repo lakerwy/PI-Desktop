@@ -2,12 +2,6 @@ export const PROTOCOL_VERSION = 11 as const;
 export const SCHEMA_VERSION = 16 as const;
 export const APP_ID = "net.aiuo.pi-desktop";
 export const APP_NAME = "PI-Desktop";
-
-/**
- * User-visible product name. `APP_NAME` stays the installation identity so
- * existing profiles, locks, and update lanes keep their paths.
- */
-export const APP_DISPLAY_NAME = "芯博agent";
 export const APP_VERSION = "0.23.0";
 
 export const APP_MENU_COMMANDS = [
